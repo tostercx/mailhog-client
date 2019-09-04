@@ -14,7 +14,7 @@ class MessageFactory
 
         return new Message(
             $mailhogResponse['ID'],
-            Contact::fromString($headers['From'][0]),
+            Contact::fromString($headers['From'][0] ?? ''),
             ContactCollection::fromString($headers['To'][0] ?? ''),
             ContactCollection::fromString($headers['Cc'][0] ?? ''),
             ContactCollection::fromString($headers['Bcc'][0] ?? ''),
