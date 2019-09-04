@@ -120,6 +120,13 @@ class MailhogClient
         $this->httpClient->sendRequest($request);
     }
 
+    public function deleteMessage(string $messageId): void
+    {
+        $request = $this->requestFactory->createRequest('DELETE', sprintf('%s/api/v1/messages/%s', $this->baseUri, $messageId));
+
+        $this->httpClient->sendRequest($request);
+    }
+
     public function releaseMessage(string $messageId, string $host, int $port, string $emailAddress): void
     {
         $body = json_encode([
